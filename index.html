@@ -15,30 +15,20 @@
   <main class="app">
     <header class="topbar">
       <div class="brand"><span class="brand-icon" aria-hidden="true">文</span><div><h1>PDFリーダー</h1><p>端末内で安全に読みやすく</p></div></div>
-      <label class="choose-file button button-primary">
-        <input id="file-input" type="file" accept="application/pdf,.pdf">
-        <span>PDFを開く</span>
-      </label>
+      <label class="choose-file button button-primary"><input id="file-input" type="file" accept="application/pdf,.pdf"><span>PDFを開く</span></label>
     </header>
-
     <section id="welcome" class="welcome">
-      <div class="welcome-icon" aria-hidden="true">PDF</div>
-      <h2>PDFを読みやすく</h2>
+      <div class="welcome-icon" aria-hidden="true">PDF</div><h2>PDFを読みやすく</h2>
       <p>ファイルを選ぶと、スマートフォンでも読みやすい縦読み表示に整えます。</p>
-      <label class="choose-file button button-primary button-large">
-        <input id="welcome-file-input" type="file" accept="application/pdf,.pdf">
-        <span>PDFファイルを選択</span>
-      </label>
+      <label class="choose-file button button-primary button-large"><input id="welcome-file-input" type="file" accept="application/pdf,.pdf"><span>PDFファイルを選択</span></label>
       <p class="privacy-note"><span aria-hidden="true">🔒</span> ファイルはブラウザー内で処理され、アップロードされません。</p>
       <p class="support-note">文字情報を含むPDFに対応しています。スキャン画像のOCRには対応していません。</p>
     </section>
-
     <section id="reader" class="reader" hidden>
       <div class="document-bar">
         <div class="document-info"><span class="file-icon" aria-hidden="true">PDF</span><div><strong id="file-name">PDF</strong><span id="doc-meta"></span></div></div>
-        <button id="close-file" class="icon-button" type="button" title="PDFを閉じる" aria-label="PDFを閉じる">×</button>
+        <button id="close-file" class="icon-button" type="button" aria-label="PDFを閉じる">×</button>
       </div>
-
       <nav class="controls" aria-label="PDF操作">
         <div class="mode-switch" role="group" aria-label="表示モード">
           <button type="button" class="mode-button selected" data-mode="reflow" aria-pressed="true">読みやすく</button>
@@ -50,23 +40,17 @@
           <label class="page-label"><input id="page-input" type="number" min="1" value="1" aria-label="ページ番号"><span>/ <span id="page-count">0</span></span></label>
           <button id="next-page" class="icon-button" type="button" aria-label="次のページ">→</button>
         </div>
-        <div class="display-tools">
-          <div class="zoom-controls" role="group" aria-label="ページの拡大縮小">
-            <button id="zoom-out" class="zoom-button" type="button" aria-label="縮小">−</button>
-            <input id="zoom-range" type="range" min="50" max="300" step="10" value="100" aria-label="ズーム倍率">
-            <button id="zoom-in" class="zoom-button" type="button" aria-label="拡大">＋</button>
-            <output id="zoom-value" for="zoom-range">100%</output>
-            <button id="fit-width" class="button button-secondary small" type="button">幅に合わせる</button>
-          </div>
-          <label class="font-control"><span>A</span><input id="font-size" type="range" min="15" max="30" value="19" aria-label="文字サイズ"><span class="large-a">A</span></label>
+        <div id="zoom-controls" class="zoom-controls" role="group" aria-label="ページの拡大縮小">
+          <button id="zoom-out" class="zoom-button" type="button" aria-label="縮小">−</button>
+          <input id="zoom-range" type="range" min="50" max="300" step="10" value="100" aria-label="ズーム倍率">
+          <button id="zoom-in" class="zoom-button" type="button" aria-label="拡大">＋</button>
+          <output id="zoom-value" for="zoom-range" aria-live="polite">幅に合わせる</output>
+          <button id="fit-width" class="button button-secondary small" type="button">幅に合わせる</button>
         </div>
+        <label id="font-control" class="font-control"><span>A</span><input id="font-size" type="range" min="15" max="30" value="19" aria-label="文字サイズ"><span class="large-a">A</span></label>
       </nav>
-
-      <p class="zoom-hint">ページ表示では、ピンチ操作またはズーム調整で拡大できます。</p>
-      <form id="search-form" class="search" role="search">
-        <input id="search-input" type="search" placeholder="このPDFを検索" aria-label="PDF内を検索">
-        <button class="button button-secondary" type="submit">検索</button>
-      </form>
+      <p id="zoom-hint" class="zoom-hint" hidden>ページ表示では、ピンチ操作またはズーム操作で拡大できます。</p>
+      <form id="search-form" class="search" role="search"><input id="search-input" type="search" placeholder="このPDFを検索" aria-label="PDF内を検索"><button class="button button-secondary" type="submit">検索</button></form>
       <div id="search-results" class="search-results" hidden aria-live="polite"></div>
       <div id="status" class="status" role="status" aria-live="polite"></div>
       <section id="viewer" class="viewer" aria-label="PDF本文"></section>
